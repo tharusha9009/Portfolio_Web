@@ -1,0 +1,267 @@
+:root {
+    --bg-color: #0a0a14;
+    --text-color: #ffffff;
+    --card-bg: #1a1a1a;
+    --accent: #333;
+    --accent-color: #78cfb4;
+    --tag-bg: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode {
+    --bg-color: #fff;
+    --text-color: #0bf44d;
+    --card-bg: #f5f5f5;
+    --accent: #eee;
+    --accent-color: #78cfb4;
+    --tag-bg: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--accent);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--bg-color);
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    opacity: 1;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem;
+}
+
+.intro {
+    margin: 3rem 0;
+}
+
+.profile {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.intro-text h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.achievements {
+    margin-top: 4rem;
+}
+
+.achievement-cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+}
+
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 2rem 0;
+}
+
+.about-illustration {
+    display: grid;
+    place-items: center;
+}
+
+.avatar-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+.orbit-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.orbit {
+    position: absolute;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
+}
+
+.orbit .dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-color);
+    border-radius: 50%;
+}
+
+.orbit1 { width: 100%; height: 100%; }
+.orbit2 { width: 80%; height: 80%; animation-duration: 8s; }
+.orbit3 { width: 60%; height: 60%; animation-duration: 6s; }
+.orbit4 { width: 40%; height: 40%; animation-duration: 4s; }
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.skill-tag {
+    background: var(--tag-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.cv-button {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    max-width: max-content;
+    transition: transform 0.2s;
+}
+
+.cv-button:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .about-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .avatar-container {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keeps the particles behind the content */
+    background: #030310/* Fallback background color */
+}
+
+.LinkdIn-icon {
+    color: #0bf44d;
+    width: 50px;
+    height:50px;
+    
+
+
+}
+.Discord-icon {
+    color: #0bf44d;
+    width: 50px;
+    height:50px;
+    
+
+}
+
+.CopyRights {
+    font-style: italic;
+}
