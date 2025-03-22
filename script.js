@@ -2,20 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.querySelector('.theme-toggle');
     const body = document.body;
     
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        body.classList.toggle('light-mode', savedTheme === 'light');
-        themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-    }
-    
-    // Theme toggle functionality
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('light-mode');
-        const isLight = body.classList.contains('light-mode');
-        themeToggle.textContent = isLight ? '🌙' : '☀️';
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    });
+   
     
     // Add active class to current nav link
     const navLinks = document.querySelectorAll('.nav-links a');
