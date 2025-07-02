@@ -1,0 +1,321 @@
+/* Content of your style.css will go here */
+/* I will remove the body.light-mode selector for now,
+   as we'll handle theme switching via a class on the body
+   controlled by React context and localStorage.
+   The default styles will be the "dark mode" and
+   we'll add a "light" class to body for light mode.
+*/
+
+:root {
+    --bg-color: #0a0a14; /* Dark mode background */
+    --text-color: #ffffff; /* Dark mode text */
+    --card-bg: #1a1a1a;   /* Dark mode card background */
+    --accent: #333;
+    --accent-color: #78cfb4; /* Main accent color */
+    --tag-bg: rgba(255, 255, 255, 0.1);
+
+    /* Define light mode variables as well */
+    --light-bg-color: #ffffff;
+    --light-text-color: #000000;
+    --light-card-bg: #f5f5f5;
+    --light-accent: #dddddd; /* Lighter accent for light mode */
+    --light-tag-bg: rgba(0, 0, 0, 0.05); /* Subtler tag background for light mode */
+    --light-accent-color: #5aa088; /* Slightly adjusted accent for light mode if needed, or keep same */
+}
+
+/* Default to dark theme */
+body {
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif; /* Use Geist font */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Light theme styles */
+body.light {
+    --bg-color: var(--light-bg-color);
+    --text-color: var(--light-text-color);
+    --card-bg: var(--light-card-bg);
+    --accent: var(--light-accent);
+    --tag-bg: var(--light-tag-bg);
+    --accent-color: var(--light-accent-color);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--accent);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    z-index: 1000;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem; /* Example styling for logo */
+    color: var(--text-color); /* Ensure logo text color also transitions */
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    opacity: 1;
+    color: var(--accent-color); /* Highlight active/hovered link with accent color */
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem;
+}
+
+.intro {
+    margin: 3rem 0;
+    text-align: center; /* Centering intro text */
+}
+
+.profile {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    gap: 1.5rem; /* Reduced gap */
+    align-items: center; /* Center items */
+    margin-bottom: 2rem; /* Space below profile section */
+}
+
+.profile-img {
+    /* Controlled by Next/Image width/height props */
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.intro-text h1 {
+    font-size: 2.5rem; /* Larger heading */
+    margin-bottom: 0.5rem; /* Reduced margin */
+    color: var(--text-color); /* Ensure transition */
+}
+.intro-text p {
+    font-size: 1.1rem;
+    color: var(--text-color); /* Ensure transition */
+    opacity: 0.8;
+}
+
+
+.achievements {
+    margin-top: 4rem;
+    text-align: center; /* Center section title */
+}
+.achievements h2, .projects h1, .about-content h1 {
+     margin-bottom: 2rem; /* Space below section titles */
+     color: var(--text-color); /* Ensure transition */
+}
+
+
+.projects {
+    margin-top: 1rem;
+    text-align: center; /* Center section title */
+}
+
+
+.achievement-cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s, background-color 0.3s ease;
+    text-align: left; /* Ensure card text is left-aligned */
+    border: 1px solid var(--accent); /* Subtle border for cards */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color); /* Highlight border on hover */
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+.card p {
+    color: var(--text-color); /* Ensure card paragraph text transitions */
+    opacity: 0.9;
+}
+
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    max-width: 800px; /* Limit width for better readability */
+    margin-left: auto;  /* Center the content block */
+    margin-right: auto; /* Center the content block */
+    text-align: center; /* Center text within about content */
+}
+.about-content p {
+    color: var(--text-color); /* Ensure transition */
+    opacity: 0.9;
+}
+
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1rem 0;
+    justify-content: center; /* Center skill tags */
+}
+
+.skill-tag {
+    background-color: var(--tag-bg);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid transparent; /* Placeholder for potential hover effect */
+}
+.skill-tag:hover {
+    border-color: var(--accent-color); /* Highlight on hover */
+}
+
+
+.cv-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 0.8rem 1.8rem; /* Slightly smaller padding */
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    max-width: max-content;
+    transition: transform 0.2s, background-color 0.3s ease, color 0.3s ease;
+    margin-top: 1rem; /* Space above button */
+}
+
+.cv-button:hover {
+    transform: translateY(-2px) scale(1.05); /* Add scale effect */
+    filter: brightness(110%); /* Make it slightly brighter */
+}
+
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+    .logo {
+        font-size: 1.2rem;
+    }
+    .nav-links {
+        gap: 0.8rem;
+    }
+    .nav-link {
+        font-size: 0.9rem; /* Smaller nav links */
+    }
+    main {
+        padding: 5rem 1rem 1rem; /* Adjust main padding */
+    }
+    .intro-text h1 {
+        font-size: 2rem;
+    }
+    .profile-img {
+        width: 80px; /* Adjust if not using Next/Image props for size */
+        height: 80px;
+    }
+    .achievement-cards {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+}
+
+
+.Social-Media {
+    text-align: center;
+    margin-top: 3rem;
+}
+.Social-Media h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle-button {
+  background-color: var(--card-bg); /* Use card background for consistency */
+  color: var(--text-color);
+  border: 1px solid var(--accent);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem; /* Adjust size of emoji/icon */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  margin-left: 1rem; /* Add some space if it's in the nav next to links */
+}
+
+.theme-toggle-button:hover {
+  border-color: var(--accent-color);
+  opacity: 0.9;
+}
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.social-links img { /* Targeting img tags directly for icons */
+    transition: transform 0.2s;
+}
+.social-links img:hover {
+    transform: scale(1.1);
+}
+
+/* Ensure Next/Image components in social links can be styled if needed.
+   The width/height props on Image are primary. If you want CSS to override,
+   you might need to wrap them or use !important (not recommended).
+   The current .LinkdIn-icon, .Discord-icon, .GitHub-icon classes from original CSS
+   might not directly apply to Next/Image output if not handled carefully.
+   For simplicity, the direct img selector above is a general approach.
+*/
+
+.CopyRights {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--accent);
+    margin-top: 3rem;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    color: var(--text-color);
+}
